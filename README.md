@@ -67,3 +67,10 @@
 ## Cara Membuat Child Context
 
 - Membuat child context ada banyak cara, yakni: Context With Value, Context With Cancel, Context With Timeout, Context With Deadline
+
+## Context With Value
+
+- Pada saat awal membuat context, context tidak memiliki value
+- Kita bisa menambah sebuah value dengan data `Pair (key-value)` ke dalam context
+- Saat kita menambah value ke context, secara `otomatis` akan `tercipta child context baru`, artinya original contextnya tidak akan berubah sama sekali
+- Untuk membuat menambahkan value ke context, kita bisa menggunakan function `context.WithValue(parent, key, value)`
