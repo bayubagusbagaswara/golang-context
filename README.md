@@ -83,7 +83,7 @@
 - Biasanya proses ini berupa goroutine yang berbeda, sehingga dengan mudah jika kita ingin membatalkan eksekusi goroutine, kita bisa mengirim sinyal cancel ke context nya
 - Namun ingat, `goroutine yang menggunakan context`, `tetap harus melakukan pengecekan terhadap contextnya`. Jika tidak, maka tidak ada gunanya
 - Untuk membuat context dengan cancel signal, kita bisa menggunakan function `context.WithCancel(parent)`
-- Goroutine leak itu adalah goroutine yang beralan terus(tidak pernah berhenti)
+- Goroutine leak itu adalah goroutine yang berjalan terus(tidak pernah berhenti)
 
 ## Context With Timeout
 
@@ -91,3 +91,9 @@
 - Dengan menggunakan pengaturan timeout, kita tidak perlu melakukan eksekusi cancel secara manual, cancel akan otomatis di eksekusi jika waktu timeout sudah terlewati
 - Penggunaan context dengan timeout sangat cocok ketika misal kita melakukan query ke database atau http api, tapi ingin menentukan batas maksimal timeout nya
 - Untuk membuat context dengan sinyal cancel secara otomatis menggunakan timeout, kita bisa menggunakan function `context.WithTimeout(parent, duration)`
+
+## Context With Deadline
+
+- Selain menggunakan timeout untuk melakukan cancel secara otomatis, kita juga bisa menggunakan deadline
+- Pengaturan deadline sedikit berbeda dengan timeout. Jika timeout kita memberi waktu dari sekarang, sedangkan kalau deadline ditentukan kapan waktu timeoutnya, misal jam 12 siang hari ini
+- Untuk membuat context dengan sinyal cancel secara otomatis menggunakan deadline, kita bisa menggunakan function context.WithDeadline(parent, time)
